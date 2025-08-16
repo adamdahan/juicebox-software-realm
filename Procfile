@@ -1,1 +1,1 @@
-web: ./bin/jb-sw-realm -id $REALM_ID -provider memory
+web: ./jb-sw-realm -id $REALM_ID -provider memory
