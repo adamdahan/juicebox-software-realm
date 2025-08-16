@@ -212,3 +212,4 @@ Note: Make sure to configure `OPENTELEMETRY_ENDPOINT` to `localhost:4317` in you
 ### AWS
 
 To deploy to Elastic Beanstalk with tracing enabled, you can update your environment to use the Docker solution stack instead of the Go solution stack. Additionally, you will need to define the appropriate additional environment properties on your configuration.
+# Force rebuild
