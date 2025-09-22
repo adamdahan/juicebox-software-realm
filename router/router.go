@@ -96,7 +96,8 @@ func RunRouter(
 		if result.event != nil {
 			err := provider.PubSub.Publish(c.Request().Context(), realmID, claims.Issuer, *result.event)
 			if err != nil {
-				return contextAwareError(c, http.StatusInternalServerError, "Error writing to pub/sub queue")
+				// Log the pubsub error but don't fail the request
+				fmt.Printf("Warning: pubsub publish failed: %v\n", err)
 			}
 		}
 		serializedResponse, err := cbor.Marshal(&result.response)
