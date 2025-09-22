@@ -1,6 +1,28 @@
 # Juicebox Software Realm
 
-This project contains all the software necessary to run a Juicebox Software Realm on the hosting provider of your choice.
+**🎉 PRODUCTION DEPLOYMENT STATUS: ✅ LIVE ON AWS**
+
+This project contains all the software necessary to run a Juicebox Software Realm on the hosting provider of your choice. 
+
+**Current AWS Production Infrastructure:**
+- 3 Realms deployed on Elastic Beanstalk
+- HTTPS access via CloudFront distributions  
+- Validated end-to-end registration and recovery
+
+## 🚀 Quick Start - AWS Production
+
+For the complete AWS deployment, see **[AWS_PRODUCTION_DEPLOYMENT.md](./AWS_PRODUCTION_DEPLOYMENT.md)**
+
+```bash
+cd aws/
+export AWS_PROFILE=jelli-wallet
+terraform apply -auto-approve
+```
+
+**Production URLs:**
+- Realm 1: https://d3no8h3k2vl9rf.cloudfront.net
+- Realm 2: https://d2lu0ef886dvi8.cloudfront.net  
+- Realm 3: https://d803p7xyrjs61.cloudfront.net
 
 We recommend adding at least one software backed realm to your configuration alongside Juicebox's hardware backed realms. Utilizing realms hosted in different cloud providers and maintained by different authorities – in addition to Juicebox's hardware backed realms – can increase the security of your user secrets. With this diversity in your configuration, you would have to compromise at least `recover_threshold` different realm providers before you could even attempt to recover a secret (and you'd _still_ have to gain access to their PIN in order to decrypt the secret).
 
@@ -212,4 +234,28 @@ Note: Make sure to configure `OPENTELEMETRY_ENDPOINT` to `localhost:4317` in you
 ### AWS
 
 To deploy to Elastic Beanstalk with tracing enabled, you can update your environment to use the Docker solution stack instead of the Go solution stack. Additionally, you will need to define the appropriate additional environment properties on your configuration.
-# Force rebuild
+
+---
+
+## 📚 **AWS Production Documentation**
+
+### **Complete Deployment Guides:**
+- **[AWS_PRODUCTION_DEPLOYMENT.md](./AWS_PRODUCTION_DEPLOYMENT.md)** - Complete production deployment guide
+- **[TECHNICAL_IMPLEMENTATION.md](./TECHNICAL_IMPLEMENTATION.md)** - Technical details, quirks, and solutions  
+- **[REMAINING_TODOS.md](./REMAINING_TODOS.md)** - Outstanding tasks and optimizations
+
+### **Current Production Status:**
+- ✅ **3 Realms Deployed**: All realms operational on AWS
+- ✅ **HTTPS Working**: CloudFront distributions active
+- ✅ **SDK Integration**: Jelli Wallet SDK configured and tested
+- ✅ **End-to-End Validation**: Registration and recovery flows verified
+- ⚠️ **OpenTelemetry**: Temporarily disabled (see REMAINING_TODOS.md)
+
+### **Quick Health Check:**
+```bash
+curl https://d3no8h3k2vl9rf.cloudfront.net/
+curl https://d2lu0ef886dvi8.cloudfront.net/
+curl https://d803p7xyrjs61.cloudfront.net/
+```
+
+**For any production issues or questions, refer to the comprehensive documentation above.**

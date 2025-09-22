@@ -1,0 +1,135 @@
+{
+    "ETag": "E1T4COE7EUMQSN",
+    "DistributionConfig": {
+        "CallerReference": "terraform-20250922182529588000000001",
+        "Aliases": {
+            "Quantity": 0
+        },
+        "DefaultRootObject": "",
+        "Origins": {
+            "Quantity": 1,
+            "Items": [
+                {
+                    "Id": "jb-sw-realm-origin",
+                    "DomainName": "awseb-e-w-AWSEBLoa-W24NAVS3W6G-828139225.us-east-1.elb.amazonaws.com",
+                    "OriginPath": "",
+                    "CustomHeaders": {
+                        "Quantity": 0
+                    },
+                    "CustomOriginConfig": {
+                        "HTTPPort": 80,
+                        "HTTPSPort": 443,
+                        "OriginProtocolPolicy": "http-only",
+                        "OriginSslProtocols": {
+                            "Quantity": 1,
+                            "Items": [
+                                "TLSv1.2"
+                            ]
+                        },
+                        "OriginReadTimeout": 30,
+                        "OriginKeepaliveTimeout": 5
+                    },
+                    "ConnectionAttempts": 3,
+                    "ConnectionTimeout": 10,
+                    "OriginShield": {
+                        "Enabled": false
+                    },
+                    "OriginAccessControlId": ""
+                }
+            ]
+        },
+        "OriginGroups": {
+            "Quantity": 0
+        },
+        "DefaultCacheBehavior": {
+            "TargetOriginId": "jb-sw-realm-origin",
+            "TrustedSigners": {
+                "Enabled": false,
+                "Quantity": 0
+            },
+            "TrustedKeyGroups": {
+                "Enabled": false,
+                "Quantity": 0
+            },
+            "ViewerProtocolPolicy": "https-only",
+            "AllowedMethods": {
+                "Quantity": 7,
+                "Items": [
+                    "HEAD",
+                    "DELETE",
+                    "POST",
+                    "GET",
+                    "OPTIONS",
+                    "PUT",
+                    "PATCH"
+                ],
+                "CachedMethods": {
+                    "Quantity": 2,
+                    "Items": [
+                        "HEAD",
+                        "GET"
+                    ]
+                }
+            },
+            "SmoothStreaming": false,
+            "Compress": false,
+            "LambdaFunctionAssociations": {
+                "Quantity": 0
+            },
+            "FunctionAssociations": {
+                "Quantity": 0
+            },
+            "FieldLevelEncryptionId": "",
+            "ForwardedValues": {
+                "QueryString": false,
+                "Cookies": {
+                    "Forward": "none"
+                },
+                "Headers": {
+                    "Quantity": 1,
+                    "Items": [
+                        "*"
+                    ]
+                },
+                "QueryStringCacheKeys": {
+                    "Quantity": 0
+                }
+            },
+            "MinTTL": 0,
+            "DefaultTTL": 0,
+            "MaxTTL": 0
+        },
+        "CacheBehaviors": {
+            "Quantity": 0
+        },
+        "CustomErrorResponses": {
+            "Quantity": 0
+        },
+        "Comment": "Juicebox Software Realm Distribution",
+        "Logging": {
+            "Enabled": false,
+            "IncludeCookies": false,
+            "Bucket": "",
+            "Prefix": ""
+        },
+        "PriceClass": "PriceClass_All",
+        "Enabled": true,
+        "ViewerCertificate": {
+            "CloudFrontDefaultCertificate": true,
+            "SSLSupportMethod": "vip",
+            "MinimumProtocolVersion": "TLSv1",
+            "CertificateSource": "cloudfront"
+        },
+        "Restrictions": {
+            "GeoRestriction": {
+                "RestrictionType": "none",
+                "Quantity": 0
+            }
+        },
+        "WebACLId": "",
+        "HttpVersion": "http2",
+        "IsIPV6Enabled": true,
+        "ContinuousDeploymentPolicyId": "",
+        "Staging": false
+    }
+}
