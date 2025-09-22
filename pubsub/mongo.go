@@ -4,6 +4,7 @@ import (
 	"context"
 	"errors"
 	"fmt"
+	"log"
 	"net/http"
 	"net/url"
 	"os"
@@ -92,14 +93,19 @@ func (m *mongoPubSub) Ack(ctx context.Context, _ types.RealmID, tenant string, i
 
 func (m *mongoPubSub) Publish(ctx context.Context, _ types.RealmID, tenant string, event EventMessage) error {
 	collection := m.db.Collection(tenant + collectionSuffix)
+	
+	// Try to create index, but don't fail if it already exists
 	eventTTLSecs := int32(7 * 24 * 60 * 60)
 	_, err := collection.Indexes().CreateOne(ctx, mongo.IndexModel{
 		Keys:    bson.D{{Key: "created", Value: 1}},
 		Options: &options.IndexOptions{ExpireAfterSeconds: &eventTTLSecs},
 	})
 	if err != nil {
-		return err
+		// Log the error but don't fail the publish operation
+		// Index creation failures shouldn't block event publishing
+		log.Printf("Warning: Failed to create TTL index for collection %s: %v", tenant+collectionSuffix, err)
 	}
+	
 	me := mongoEventMessage{
 		Event:   event,
 		Created: time.Now(),
